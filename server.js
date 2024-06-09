@@ -1,14 +1,9 @@
-const express = require('express')
-const app = express()
-const port = process.env.PORT || 10000;
-const path = require('path')
+const express = require('express');
+const path = require('path');
+const app = express();
 
-app.use(express.static(__dirname + '/dist/ognd'))
-
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname + '/dist/ognd'))
-})
-
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
-})
+app.use(express.static(__dirname + '/dist/ognd'));
+app.get('/', function (req, res) {
+  res.sendFile(path.join(__dirname + '/dist/ognd/index.html'));
+});
+app.listen(process.env.PORT || 10000);
